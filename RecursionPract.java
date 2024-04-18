@@ -59,15 +59,32 @@ public class RecursionPract {
 
     public static void reverse(String s, int i) {
         if (i == 0) {
-            System.out.print(s.charAt(i));
+            System.out.println(s.charAt(i));
             return;
         }
-        System.out.print(s.charAt(i));
+        System.out.println(s.charAt(i));
         reverse(s, i - 1);
     }
 
-    public static void fAndL(String str, String e, int idx) {
+    public static int first = -1;
+    public static int last = -1;
 
+    public static void fAndL(String str, char e, int idx) {
+        if (idx == str.length()) {
+            System.out.println(first);
+            System.out.println(last);
+            return;
+        }
+        char currentChar = str.charAt(idx);
+        if (currentChar == e) {
+            if (first == -1) {
+                first = idx;
+            } else {
+                last = idx;
+            }
+        }
+        ;
+        fAndL(str, e, idx + 1);
     }
 
     public static void main(String args[]) {
@@ -85,7 +102,7 @@ public class RecursionPract {
         // Fibonacci(0, 1, 10);
 
         // A recursive Java palindrome checker
-        // System.out.println(palindrome("mom"));
+        // System.out.println(palindrome("mmomm"));
 
         // reverse String
         // String s = "abcd";
@@ -93,7 +110,7 @@ public class RecursionPract {
 
         // first and last accourance of a element in string
         String str = "aabbcdadbda";
-        fAndL(str, "a", 0);
-
+        char a = 'a';
+        fAndL(str, a, 0);
     }
 }
