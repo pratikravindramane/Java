@@ -90,7 +90,7 @@ public class RecursionPract {
     // check sorting by +1 only
     public static boolean ChecSorted(int[] arr, int idx) {
         if (idx == arr.length - 1) {
-                return true;
+            return true;
         }
         if (arr[idx] + 1 == arr[idx + 1]) {
             return ChecSorted(arr, idx + 1);
@@ -103,10 +103,26 @@ public class RecursionPract {
         if (idx == arr.length - 1) {
             return true;
         }
-        if (arr[idx] < arr[idx + 1]) {
+        if (arr[idx] > arr[idx + 1]) {
             return ChecSorted_1(arr, idx + 1);
         }
         return false;
+    }
+
+    public static void moveToEnd(String str, int count, String newString, int idx) {
+        if (idx == str.length() - 1) {
+            for(int i=0;i<count;i++){
+                newString+='x';
+            }
+            System.out.println(newString);
+            return;
+        }
+        if (str.charAt(idx) == 'x') {
+            count += 1;
+        } else {
+            newString += str.charAt(idx);
+        }
+        moveToEnd(str, count, newString, idx + 1);
     }
 
     public static void main(String args[]) {
@@ -136,9 +152,12 @@ public class RecursionPract {
         // fAndL(str, a, 0);
 
         // check if an array is sorted and it should be increasing
-        int arr[] = { -1, 0, 2, 4, 9, 10 };
-        System.out.println(ChecSorted(arr, 0));
-        System.out.println(ChecSorted_1(arr, 0));
+        // int arr[] = { -1, 0, 2, 4, 9, 10 };
+        // System.out.println(ChecSorted(arr, 0));
+        // System.out.println(ChecSorted_1(arr, 0));
+
+        // move all x at the end of the string
+        moveToEnd("xpwwexxsaxs", 0, "", 0);
 
     }
 }
