@@ -87,6 +87,28 @@ public class RecursionPract {
         fAndL(str, e, idx + 1);
     }
 
+    // check sorting by +1 only
+    public static boolean ChecSorted(int[] arr, int idx) {
+        if (idx == arr.length - 1) {
+                return true;
+        }
+        if (arr[idx] + 1 == arr[idx + 1]) {
+            return ChecSorted(arr, idx + 1);
+        }
+        return false;
+    }
+
+    // check sorting by ascending order
+    public static boolean ChecSorted_1(int[] arr, int idx) {
+        if (idx == arr.length - 1) {
+            return true;
+        }
+        if (arr[idx] < arr[idx + 1]) {
+            return ChecSorted_1(arr, idx + 1);
+        }
+        return false;
+    }
+
     public static void main(String args[]) {
         // Print a series of numbers with recursive Java methods
         // series(10);
@@ -109,8 +131,14 @@ public class RecursionPract {
         // reverse(s, s.length() - 1);
 
         // first and last accourance of a element in string
-        String str = "aabbcdadbda";
-        char a = 'a';
-        fAndL(str, a, 0);
+        // String str = "aabbcdadbda";
+        // char a = 'a';
+        // fAndL(str, a, 0);
+
+        // check if an array is sorted and it should be increasing
+        int arr[] = { -1, 0, 2, 4, 9, 10 };
+        System.out.println(ChecSorted(arr, 0));
+        System.out.println(ChecSorted_1(arr, 0));
+
     }
 }
