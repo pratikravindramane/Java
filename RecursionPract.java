@@ -143,9 +143,9 @@ public class RecursionPract {
 
     public static void subsequences(String str, int idx, String newString, HashSet<String> set) {
         if (idx == str.length()) {
-            if(set.contains(newString)){
+            if (set.contains(newString)) {
                 return;
-            }else{
+            } else {
                 set.add(newString);
                 System.out.println(newString);
                 return;
@@ -155,10 +155,25 @@ public class RecursionPract {
         char currentChar = str.charAt(idx);
 
         // to be
-        subsequences(str, idx + 1, newString + currentChar,set);
+        subsequences(str, idx + 1, newString + currentChar, set);
 
         // or not to be
-        subsequences(str, idx + 1, newString,set);
+        subsequences(str, idx + 1, newString, set);
+    }
+
+    public static String[] keypad = {".","abc","def","ghi","jkl","mno","pqrs","tu","vwx","yz"};
+
+    public static void printComb(String str, int idx, String combination) {
+        if (idx == str.length()) {
+            System.out.println(combination);
+            return;
+        }
+        char currentChar = str.charAt(idx);
+        String mapping = keypad[currentChar - '0'];
+        for (int i = 0; i < mapping.length(); i++) {
+            System.out.println("---");
+            printComb(str, idx + 1, combination + mapping.charAt(i));
+        }
     }
 
     public static void main(String args[]) {
@@ -199,8 +214,10 @@ public class RecursionPract {
         // removeDuplicates("asdassdbasaa", 0, "");
 
         // all possible subsequences of an string
-        HashSet<String> set = new HashSet<String>();
-        subsequences("aaa", 0, "", set);
+        // HashSet<String> set = new HashSet<String>();
+        // subsequences("aaa", 0, "", set);
 
+        // print keyboard combination
+        printComb("23", 0, "");
     }
 }
