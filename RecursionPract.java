@@ -139,6 +139,21 @@ public class RecursionPract {
         removeDuplicates(str, idc + 1, newString);
     }
 
+    public static void subsequences(String str, int idx, String newString) {
+        if (idx == str.length()) {
+            System.out.println(newString);
+            return;
+        }
+
+        char currentChar = str.charAt(idx);
+
+        // to be
+        subsequences(str, idx + 1, newString + currentChar);
+
+        // or not to be
+        subsequences(str, idx + 1, newString);
+    }
+
     public static void main(String args[]) {
         // Print a series of numbers with recursive Java methods
         // series(10);
@@ -174,7 +189,10 @@ public class RecursionPract {
         // moveToEnd("xpwwexxsaxs", 0, "", 0);
 
         // remove dublicate character from the strng
-        removeDuplicates("asdassdbasaa", 0, "");
+        // removeDuplicates("asdassdbasaa", 0, "");
+
+        // subsequences of an string
+        subsequences("abc", 0, "");
 
     }
 }
