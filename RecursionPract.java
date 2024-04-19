@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class RecursionPract {
     public static void series(int n) {
         if (n == 0) {
@@ -139,19 +141,24 @@ public class RecursionPract {
         removeDuplicates(str, idc + 1, newString);
     }
 
-    public static void subsequences(String str, int idx, String newString) {
+    public static void subsequences(String str, int idx, String newString, HashSet<String> set) {
         if (idx == str.length()) {
-            System.out.println(newString);
-            return;
+            if(set.contains(newString)){
+                return;
+            }else{
+                set.add(newString);
+                System.out.println(newString);
+                return;
+            }
         }
 
         char currentChar = str.charAt(idx);
 
         // to be
-        subsequences(str, idx + 1, newString + currentChar);
+        subsequences(str, idx + 1, newString + currentChar,set);
 
         // or not to be
-        subsequences(str, idx + 1, newString);
+        subsequences(str, idx + 1, newString,set);
     }
 
     public static void main(String args[]) {
@@ -191,8 +198,9 @@ public class RecursionPract {
         // remove dublicate character from the strng
         // removeDuplicates("asdassdbasaa", 0, "");
 
-        // subsequences of an string
-        subsequences("abc", 0, "");
+        // all possible subsequences of an string
+        HashSet<String> set = new HashSet<String>();
+        subsequences("aaa", 0, "", set);
 
     }
 }
