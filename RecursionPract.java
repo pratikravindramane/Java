@@ -111,8 +111,8 @@ public class RecursionPract {
 
     public static void moveToEnd(String str, int count, String newString, int idx) {
         if (idx == str.length() - 1) {
-            for(int i=0;i<count;i++){
-                newString+='x';
+            for (int i = 0; i < count; i++) {
+                newString += 'x';
             }
             System.out.println(newString);
             return;
@@ -123,6 +123,20 @@ public class RecursionPract {
             newString += str.charAt(idx);
         }
         moveToEnd(str, count, newString, idx + 1);
+    }
+
+    public static boolean[] map = new boolean[26];
+
+    public static void removeDuplicates(String str, int idc, String newString) {
+        if (idc == str.length()) {
+            System.out.println(newString);
+            return;
+        }
+        if (map[str.charAt(idc) - 'a'] == false) {
+            map[str.charAt(idc) - 'a'] = true;
+            newString += str.charAt(idc);
+        }
+        removeDuplicates(str, idc + 1, newString);
     }
 
     public static void main(String args[]) {
@@ -157,7 +171,10 @@ public class RecursionPract {
         // System.out.println(ChecSorted_1(arr, 0));
 
         // move all x at the end of the string
-        moveToEnd("xpwwexxsaxs", 0, "", 0);
+        // moveToEnd("xpwwexxsaxs", 0, "", 0);
+
+        // remove dublicate character from the strng
+        removeDuplicates("asdassdbasaa", 0, "");
 
     }
 }
