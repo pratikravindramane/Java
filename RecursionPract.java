@@ -161,7 +161,7 @@ public class RecursionPract {
         subsequences(str, idx + 1, newString, set);
     }
 
-    public static String[] keypad = {".","abc","def","ghi","jkl","mno","pqrs","tu","vwx","yz"};
+    public static String[] keypad = { ".", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz" };
 
     public static void printComb(String str, int idx, String combination) {
         if (idx == str.length()) {
@@ -176,17 +176,25 @@ public class RecursionPract {
         }
     }
 
-    public static void printPermutation(String str, String permutation){
-        if(str.length()==0){
+    public static void printPermutation(String str, String permutation) {
+        if (str.length() == 0) {
             System.out.println(permutation);
             return;
         }
 
-        for(int i=0; i < str.length();i++){
+        for (int i = 0; i < str.length(); i++) {
             char currentChar = str.charAt(i);
-            String newStr = str.substring(0, i)+str.substring(i+1);
-            printPermutation(newStr, permutation+currentChar);
+            String newStr = str.substring(0, i) + str.substring(i + 1);
+            printPermutation(newStr, permutation + currentChar);
         }
+    }
+
+    public static void countMazePath(int intialN, int initialM, int n, int m, int count) {
+        if (intialN == n && initialM == m) {
+            System.out.println(count);
+            return;
+        }
+        
     }
 
     public static void main(String args[]) {
@@ -234,6 +242,9 @@ public class RecursionPract {
         // printComb("23", 0, "");
 
         // permutation
-        printPermutation("abc", "");
+        // printPermutation("abc", "");
+
+        // count total path in a maze to move from (0,0) to (n,m)
+        countMazePath(0, 0, 3, 3, 0);
     }
 }
