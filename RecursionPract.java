@@ -189,12 +189,31 @@ public class RecursionPract {
         }
     }
 
-    public static void countMazePath(int intialN, int initialM, int n, int m, int count) {
-        if (intialN == n && initialM == m) {
-            System.out.println(count);
+    public static int mainCount = 0;
+    public static void countMazePathMyWay(int initialN, int initialM, int n, int m, int count) {
+        if (n == 0 || m == 0)
             return;
+
+        if (initialN == n && initialM == m) {
+            System.out.println(mainCount);
+            return ;
         }
-        
+
+        // increase initialN
+        if (initialN != n) {
+            if (initialN + 1 == n && initialM == m) {
+                mainCount += 1;
+            }
+            countMazePathMyWay(initialN + 1, initialM, n, m, mainCount);
+        }
+
+        // increasde initialM
+        if (initialM != m) {
+            if (initialN == n && initialM + 1 == m) {
+                mainCount += 1;
+            }
+            countMazePathMyWay(initialN, initialM + 1, n, m, mainCount);
+        }
     }
 
     public static void main(String args[]) {
@@ -245,6 +264,6 @@ public class RecursionPract {
         // printPermutation("abc", "");
 
         // count total path in a maze to move from (0,0) to (n,m)
-        countMazePath(0, 0, 3, 3, 0);
+        countMazePathMyWay(1, 1, 3, 3, 0);
     }
 }
