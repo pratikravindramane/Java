@@ -232,10 +232,18 @@ public class RecursionPract {
         return downward + rightward;
     }
 
-
-    public static void placeTiles(String[] args) {
-        
+    public static int placeTiles(int n, int m) {
+        if (n == m) {
+            return 2;
+        }
+        if(n<m){
+            return 1 ;
+        }
+        int vertical = placeTiles(n - m, m);
+        int horizontal = placeTiles(n - 1, m);
+        return vertical + horizontal;
     }
+
     public static void main(String args[]) {
         // Print a series of numbers with recursive Java methods
         // series(10);
@@ -285,7 +293,11 @@ public class RecursionPract {
 
         // count total path in a maze to move from (0,0) to (n,m)
         // countMazePathMyWay(1, 1, 3, 3, 0);
-        int totalCount = countMazePath(0, 0, 3, 3);
-        System.out.println(totalCount);
+        // int totalCount = countMazePath(0, 0, 3, 3);
+        // System.out.println(totalCount);
+
+        // place tiles of size 1xm in a floor size of nxm
+        int tiles =placeTiles(4, 2);
+        System.out.println(tiles);
     }
 }
