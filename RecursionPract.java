@@ -190,13 +190,14 @@ public class RecursionPract {
     }
 
     public static int mainCount = 0;
+
     public static void countMazePathMyWay(int initialN, int initialM, int n, int m, int count) {
         if (n == 0 || m == 0)
             return;
 
         if (initialN == n && initialM == m) {
             System.out.println(mainCount);
-            return ;
+            return;
         }
 
         // increase initialN
@@ -216,6 +217,25 @@ public class RecursionPract {
         }
     }
 
+    public static int countMazePath(int i, int j, int n, int m) {
+        if (i == n || j == m) {
+            return 0;
+        }
+        if (i == n - 1 || j == m - 1) {
+            return 1;
+        }
+        // downward
+        int downward = countMazePath(i + 1, j, n, m);
+
+        // righward
+        int rightward = countMazePath(i, j + 1, n, m);
+        return downward + rightward;
+    }
+
+
+    public static void placeTiles(String[] args) {
+        
+    }
     public static void main(String args[]) {
         // Print a series of numbers with recursive Java methods
         // series(10);
@@ -264,6 +284,8 @@ public class RecursionPract {
         // printPermutation("abc", "");
 
         // count total path in a maze to move from (0,0) to (n,m)
-        countMazePathMyWay(1, 1, 3, 3, 0);
+        // countMazePathMyWay(1, 1, 3, 3, 0);
+        int totalCount = countMazePath(0, 0, 3, 3);
+        System.out.println(totalCount);
     }
 }
