@@ -236,12 +236,21 @@ public class RecursionPract {
         if (n == m) {
             return 2;
         }
-        if(n<m){
-            return 1 ;
+        if (n < m) {
+            return 1;
         }
         int vertical = placeTiles(n - m, m);
         int horizontal = placeTiles(n - 1, m);
         return vertical + horizontal;
+    }
+
+    public static int pairsCount(int n) {
+        if (n == 1 || n == 0) {
+            return 1;
+        }
+        int ways1 = pairsCount(n - 1);
+        int ways2 = (n - 1) * pairsCount(n - 2);
+        return ways1 + ways2;
     }
 
     public static void main(String args[]) {
@@ -297,7 +306,11 @@ public class RecursionPract {
         // System.out.println(totalCount);
 
         // place tiles of size 1xm in a floor size of nxm
-        int tiles =placeTiles(4, 2);
-        System.out.println(tiles);
+        // int tiles =placeTiles(4, 2);
+        // System.out.println(tiles);
+
+        // retrun pair or single as per the given number
+        int n = 4;
+        System.out.println(pairsCount(n));
     }
 }
