@@ -1,3 +1,4 @@
+package Recursion;
 public class Recursion {
     public static void PrintSum(int i, int n, int f) {
         if (i == n) {
