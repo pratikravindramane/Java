@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class RecursionPract {
@@ -245,12 +246,33 @@ public class RecursionPract {
     }
 
     public static int pairsCount(int n) {
-        if (n == 1 || n == 0) {
+        if (n <= 1) {
             return 1;
         }
         int ways1 = pairsCount(n - 1);
         int ways2 = (n - 1) * pairsCount(n - 2);
         return ways1 + ways2;
+    }
+
+    public static void print(ArrayList<Integer> subset) {
+        for (int i = 0; i < subset.size(); i++) {
+            System.out.print(subset.get(i) + " ");
+        }
+        System.out.println();
+    }
+
+    public static void subsetOfFirstNatural(int n, ArrayList<Integer> subset) {
+        if (n == 0) {
+            print(subset);
+            return;
+        }
+        // will add
+        subset.add(n);
+        subsetOfFirstNatural(n - 1, subset);
+
+        // will not add
+        subset.remove(subset.size() - 1);
+        subsetOfFirstNatural(n - 1, subset);
     }
 
     public static void main(String args[]) {
@@ -310,7 +332,12 @@ public class RecursionPract {
         // System.out.println(tiles);
 
         // retrun pair or single as per the given number
-        int n = 4;
-        System.out.println(pairsCount(n));
+        // int n = 4;
+        // System.out.println(pairsCount(n));
+
+        // subset of first naturn number
+        int n = 3;
+        ArrayList<Integer> subset = new ArrayList<>();
+        subsetOfFirstNatural(n, subset);
     }
 }
