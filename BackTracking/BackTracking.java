@@ -16,7 +16,8 @@ public class BackTracking {
     public static void main(String[] args) {
         String str = "ABC";
         System.out.println(str.substring(0, 0));
-        System.out.println(str.substring(0 + 1));
+
+        System.out.println(str.substring(0 + 1));   
         permutation(str, "");
     }
 }
