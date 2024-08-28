@@ -77,30 +77,36 @@ public class Solution {
         return min_diff;
     }
 
-    public static void permutation(List<List<Integer>> result, List<Integer> tempArryLIst, int[] nums) {
-        if (tempArryLIst.size() == nums.length) {
-            result.add(new ArrayList<>(tempArryLIst));
+    public static void permutation(List<List<Integer>> result, List<Integer> tempList, int[] nums) {
+        if (tempList.size() == nums.length) {
+            result.add(new ArrayList<>(tempList));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (tempArryLIst.contains(nums[i]))
+            if (tempList.contains(nums[i]))
                 continue;
-            tempArryLIst.add(nums[i]);
-            permutation(result, tempArryLIst, nums);
-            tempArryLIst.remove(tempArryLIst.size() - 1);
+            tempList.add(nums[i]);
+            permutation(result, tempList, nums);
+            tempList.remove(tempList.size() - 1);
         }
-
     }
 
     public static void main(String arg[]) {
         // next permutation
         int[] nums = { 3, 2, 1 };
-        Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
-        permutation(result, new ArrayList<>(), nums);
-        System.out.println(result.contains(nums));
-        System.out.println(result);
-
+        int[] newArr = nums.clone();
+        Arrays.sort(newArr);
+        permutation(result, new ArrayList<>(), newArr);
+        int nextPermutation = 0;
+        for (int i = 0; i < result.size(); i++) {
+            if (result.get(i).toString().equals(Arrays.toString(nums))) {
+                nextPermutation = (i + 1) % result.size(); // Next permutation
+                break;
+            }
+        }
+        System.out.println(Arrays.toString(nums));
+        System.out.println("nextPermutation" + result.get(nextPermutation));
         // Chocolate Distribution Problem
         // int arr[] = { 3, 4, 1, 9, 56, 7, 9, 12 };
         // int m = 5;
