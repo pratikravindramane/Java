@@ -1,4 +1,7 @@
+import java.util.LinkedList;
+
 public class LinkedLists {
+    private int size;
 
     class Node {
         String data;
@@ -7,6 +10,7 @@ public class LinkedLists {
         Node(String data) {
             this.data = data;
             this.next = null;
+            size++;
         }
     }
 
@@ -45,6 +49,7 @@ public class LinkedLists {
             return;
         }
         head = head.next;
+        size--;
     }
 
     public void deleteLast() {
@@ -52,6 +57,7 @@ public class LinkedLists {
             System.out.println("Empty Linked List");
             return;
         }
+        size--;
         if (head.next == null) {
             head = null;
             return;
@@ -79,6 +85,17 @@ public class LinkedLists {
         System.out.println("NUll");
     }
 
+    public int printSize() {
+        return size;
+    }
+
+    public void reverList(LinkedLists list) {
+        String lastElement;
+        for (int i = size - 1; i >= 0; i--) {
+            if (i == size - 1)
+                lastElement = ;
+        }
+    }
     public static void main(String[] args) {
         LinkedLists list = new LinkedLists();
         list.addToStart("first");
@@ -89,6 +106,9 @@ public class LinkedLists {
         list.print();
         list.deleteFirst();
         list.print();
+        System.out.println(list.printSize());
+        reverList(list);
+
     }
 
 }
