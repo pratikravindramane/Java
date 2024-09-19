@@ -89,25 +89,54 @@ public class LinkedLists {
         return size;
     }
 
-    public void reverList(LinkedLists list) {
-        String lastElement;
-        for (int i = size - 1; i >= 0; i--) {
-            if (i == size - 1)
-                lastElement = ;
+    public void reverList() {
+        if (head == null || head.next == null)
+            return;
+
+        Node prevNode = head;
+        Node curNode = head.next;
+
+        while (curNode != null) {
+            Node newNode = curNode.next;
+            curNode.next = prevNode;
+
+            // update
+            prevNode = curNode;
+            curNode = newNode;
         }
+
+        head.next = null;
+        head = prevNode;
     }
+
+    public void recursiveReverse(Node currentNode) {
+        if (currentNode == null || currentNode.next == null) {
+            head = currentNode;
+            return;
+        }
+
+        recursiveReverse(currentNode.next);
+
+        currentNode.next.next = currentNode;
+        currentNode.next = null; 
+    }
+
     public static void main(String[] args) {
         LinkedLists list = new LinkedLists();
-        list.addToStart("first");
-        list.addToStart("new first");
-        list.addToLast("last");
+        list.addToStart("2");
+        list.addToStart("1");
+        list.addToLast("3");
         list.print();
-        list.deleteFirst();
+        list.reverList();
         list.print();
-        list.deleteFirst();
+        list.recursiveReverse(list.head);
         list.print();
+        // list.deleteFirst();
+        // list.print();
+        // list.deleteFirst();
+        // list.print();
         System.out.println(list.printSize());
-        reverList(list);
+        // reverList(list);
 
     }
 
