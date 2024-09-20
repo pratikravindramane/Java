@@ -118,24 +118,45 @@ public class LinkedLists {
         recursiveReverse(currentNode.next);
 
         currentNode.next.next = currentNode;
-        currentNode.next = null; 
+        currentNode.next = null;
+    }
+
+    public void removeNthFromLast(int n) {
+        // retrun if the starting values are null
+        if (head == null || head.next == null)
+            return;
+        if (n > size) {
+            System.out.println("Enter a smaller Integer");
+            return;
+        }
+        int idx = size - n + 1;
+
+        Node curNode = head;
+        Node nextNode = head.next;
+        int count = 0;
+        while (count < idx) {
+            curNode = nextNode;
+            nextNode = nextNode.next;
+            count++;
+        }
+        curNode.next = nextNode.next;
+
     }
 
     public static void main(String[] args) {
         LinkedLists list = new LinkedLists();
-        list.addToStart("2");
-        list.addToStart("1");
-        list.addToLast("3");
-        list.print();
-        list.reverList();
-        list.print();
-        list.recursiveReverse(list.head);
-        list.print();
+        list.addToStart("b");
+        list.addToStart("a");
+        list.addToLast("c");
+        // list.print();
+        // list.reverList();
+        // list.print();
+        // list.recursiveReverse(list.head);
         // list.deleteFirst();
         // list.print();
         // list.deleteFirst();
-        // list.print();
-        System.out.println(list.printSize());
+        list.removeNthFromLast(1);
+        list.print();
         // reverList(list);
 
     }
