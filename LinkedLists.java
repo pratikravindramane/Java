@@ -129,11 +129,19 @@ public class LinkedLists {
             System.out.println("Enter a smaller Integer");
             return;
         }
+        if (n == size) {
+            head = head.next;
+            return;
+        }
         int idx = size - n;
 
         Node curNode = head;
-        int count = 0;
+        System.out.println(idx);
+        int count = 1;
         while (count < idx) {
+            System.out.println(curNode.next.data);
+            if (curNode.next == null)
+                return;
             curNode = curNode.next;
             count++;
         }
