@@ -129,17 +129,15 @@ public class LinkedLists {
             System.out.println("Enter a smaller Integer");
             return;
         }
-        int idx = size - n + 1;
+        int idx = size - n;
 
         Node curNode = head;
-        Node nextNode = head.next;
         int count = 0;
         while (count < idx) {
-            curNode = nextNode;
-            nextNode = nextNode.next;
+            curNode = curNode.next;
             count++;
         }
-        curNode.next = nextNode.next;
+        curNode.next = curNode.next.next;
 
     }
 
@@ -155,7 +153,7 @@ public class LinkedLists {
         // list.deleteFirst();
         // list.print();
         // list.deleteFirst();
-        list.removeNthFromLast(1);
+        list.removeNthFromLast(3);
         list.print();
         // reverList(list);
 
