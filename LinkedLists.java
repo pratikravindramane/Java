@@ -147,13 +147,10 @@ public class LinkedLists {
     public Node findMiddle(Node givNode) {
         Node rabit = head;
         Node turtle = head;
-        int count = 0;
         while (rabit.next != null && rabit.next.next != null) {
             rabit.next = rabit.next.next;
             turtle.next = turtle.next;
-             count++;
         }
-System.out.println(count);
         return turtle;
     }
 
@@ -193,7 +190,7 @@ System.out.println(count);
         list.addToStart("b");
         list.addToStart("a");
         list.addToLast("c");
-        list.addToLast("c");
+        // list.addToLast("c");
         list.addToLast("b");
         list.addToLast("a");
         list.print();
