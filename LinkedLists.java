@@ -14,7 +14,7 @@ public class LinkedLists {
         }
     }
 
-    Node head;
+    static Node head;
 
     public void addToStart(String data) {
         Node newNode = new Node(data);
@@ -129,18 +129,63 @@ public class LinkedLists {
             System.out.println("Enter a smaller Integer");
             return;
         }
-        int idx = size - n + 1;
+        if (n == size) {
+            head = head.next;
+            return;
+        }
+        int idx = size - n;
 
-        Node curNode = head;
-        Node nextNode = head.next;
-        int count = 0;
+        Node prevNode = head;
+        int count = 1;
         while (count < idx) {
-            curNode = nextNode;
-            nextNode = nextNode.next;
+            prevNode = prevNode.next;
             count++;
         }
-        curNode.next = nextNode.next;
+        prevNode.next = prevNode.next.next;
+    }
 
+    public Node findMiddle(Node givNode) {
+        Node rabit = head;
+        Node turtle = head;
+        int count = 0;
+        while (rabit.next != null && rabit.next.next != null) {
+            rabit.next = rabit.next.next;
+            turtle.next = turtle.next;
+             count++;
+        }
+System.out.println(count);
+        return turtle;
+    }
+
+    public Node reverFromNthNode(Node givenNode) {
+        Node prevNode = null;
+        Node curNode = givenNode;
+
+        while (curNode != null) {
+            Node next = curNode.next;
+            curNode.next = prevNode;
+
+            prevNode = curNode;
+            curNode = next;
+        }
+        return prevNode;
+    }
+
+    public boolean isPalindrome(Node givenNode) {
+        if (givenNode == null || givenNode.next == null)
+            return true;
+
+        Node middlNode = findMiddle(givenNode);
+        Node secondHalfStart = reverFromNthNode(middlNode.next);
+
+        Node firtHalftStart = head;
+        while (secondHalfStart != null) {
+            if (firtHalftStart.data != secondHalfStart.data)
+                return false;
+            firtHalftStart = firtHalftStart.next;
+            secondHalfStart = secondHalfStart.next;    
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -148,6 +193,10 @@ public class LinkedLists {
         list.addToStart("b");
         list.addToStart("a");
         list.addToLast("c");
+        list.addToLast("c");
+        list.addToLast("b");
+        list.addToLast("a");
+        list.print();
         // list.print();
         // list.reverList();
         // list.print();
@@ -155,8 +204,10 @@ public class LinkedLists {
         // list.deleteFirst();
         // list.print();
         // list.deleteFirst();
-        list.removeNthFromLast(1);
-        list.print();
+        // list.removeNthFromLast(2);
+        // list.print();
+        System.out.println(list.isPalindrome(head));
+
         // reverList(list);
 
     }
