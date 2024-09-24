@@ -180,9 +180,22 @@ public class LinkedLists {
             if (firtHalftStart.data != secondHalfStart.data)
                 return false;
             firtHalftStart = firtHalftStart.next;
-            secondHalfStart = secondHalfStart.next;    
+            secondHalfStart = secondHalfStart.next;
         }
         return true;
+    }
+
+    public boolean isCycle(Node givNode) {
+        Node rabit = givNode;
+        Node turtle = givNode;
+
+        while (rabit != null && rabit.next != null) {
+            rabit = rabit.next.next;
+            turtle = turtle.next;
+            if (rabit == turtle)
+                return true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -203,7 +216,8 @@ public class LinkedLists {
         // list.deleteFirst();
         // list.removeNthFromLast(2);
         // list.print();
-        System.out.println(list.isPalindrome(head));
+        // System.out.println(list.isPalindrome(head));
+        System.out.println(list.isCycle(head));
 
         // reverList(list);
 
