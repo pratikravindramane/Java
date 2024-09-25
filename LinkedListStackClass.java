@@ -1,4 +1,4 @@
-public class StackClass {
+public class LinkedListStackClass {
     static class Node {
         int data;
         Node next;
