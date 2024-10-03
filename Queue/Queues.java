@@ -1,3 +1,5 @@
+package Queue;
+
 public class Queues {
     static class Queue {
         static int arr[];
@@ -18,11 +20,10 @@ public class Queues {
                 System.out.println("queue is full");
                 return;
             }
-            rear++;
-            arr[rear] = n;
+            arr[++rear] = n;
         };
 
-        public static int remove() {
+        public int remove() {
             if (isEmpty()) {
                 System.out.println("queue is empty");
                 return -1;
@@ -51,10 +52,11 @@ public class Queues {
         l.add(1);
         l.add(4);
         l.add(1);
-        l.add(1);
-        l.add(1);
-        System.out.println(l.peek());
-        l.remove();
-        System.out.println(l.peek());
+        l.add(6);
+        while (!l.isEmpty()) {
+            System.out.println(l.peek());
+            l.remove();
+        }
+
     }
 }

@@ -1,10 +1,12 @@
+package Stack;
+
 import java.util.ArrayList;
 
 public class ArrayListStack {
     static class Stack {
         static ArrayList<Integer> list = new ArrayList<>();
 
-        public static  boolean isEmpty() {
+        public static boolean isEmpty() {
             return list.size() == 0;
         }
 
@@ -16,12 +18,14 @@ public class ArrayListStack {
             if (isEmpty())
                 return -1;
             int top = list.get(list.size() - 1);
-            list.remove(list.size()-1);
+            list.remove(list.size() - 1);
             return top;
         }
-        public  int peek(){
-            if(isEmpty()) return -1;
-            return list.get(list.size()-1);
+
+        public int peek() {
+            if (isEmpty())
+                return -1;
+            return list.get(list.size() - 1);
         }
     }
 

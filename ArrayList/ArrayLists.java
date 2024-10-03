@@ -1,3 +1,5 @@
+package ArrayList;
+
 import java.util.*;
 
 public class ArrayLists {
@@ -6,9 +8,9 @@ public class ArrayLists {
         ArrayList<Boolean> bList = new ArrayList<>();
         ArrayList<String> sList = new ArrayList<>();
 
-        iList.add(1 );
-        iList.add(3 );
-        iList.add(4 );
+        iList.add(1);
+        iList.add(3);
+        iList.add(4);
         iList.add(5);
         System.out.println(iList);
 
