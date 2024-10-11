@@ -6,14 +6,14 @@ public class ChocolateDistribution {
         int arr[] = { 7, 3, 2, 4, 9, 12, 56 };
         Arrays.sort(arr);
         int m = 5;
-        int min = arr[0];
-        int max = arr[0];
-        for (int i = 0; i < m; i++) {
-            if (arr[i] < min)
-                min = arr[i];
-            if (arr[i] > max)
-                max = arr[i];
+        int minDiff = Integer.MAX_VALUE;
+        for (int i = 0; i <= arr.length - m; i++) {
+            int min = arr[i];
+            int max = arr[i + m - 1];
+            int diff = max - min;
+            if (diff < minDiff)
+                minDiff = diff;
         }
-        System.out.println(max - min);
+        System.out.println(minDiff);
     }
 }
