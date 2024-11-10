@@ -1,4 +1,4 @@
-package LinkedList;
+package LinkedListQuestions;
 
 import java.util.LinkedList;
 

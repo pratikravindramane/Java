@@ -1,4 +1,5 @@
 package Recursion;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -321,7 +322,7 @@ public class RecursionPract {
         // printComb("23", 0, "");
 
         // permutation
-        // printPermutation("abc", "");
+        printPermutation("abc", "");
 
         // count total path in a maze to move from (0,0) to (n,m)
         // countMazePathMyWay(1, 1, 3, 3, 0);
@@ -337,8 +338,8 @@ public class RecursionPract {
         // System.out.println(pairsCount(n));
 
         // subset of first naturn number
-        int n = 3;
-        ArrayList<Integer> subset = new ArrayList<>();
-        subsetOfFirstNatural(n, subset);
+        // int n = 3;
+        // ArrayList<Integer> subset = new ArrayList<>();
+        // subsetOfFirstNatural(n, subset);
     }
 }
